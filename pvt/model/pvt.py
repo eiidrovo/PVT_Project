@@ -21,3 +21,37 @@ def rs():
     return(RS)
 
 print("hello World")
+
+def Bo():
+    """
+    This function retruns the Oil Formation Volume Factor
+
+    Returns
+    -------
+
+    """
+    Bo = "Bo"
+    return(Bo)
+
+def rho():
+    """
+    This function retruns the density of the oil
+
+    Returns
+    -------
+
+    """
+    rho = "rho"
+    return(rho)
+
+def mu():
+    """
+    This function retruns the viscosity of the oil
+
+    Returns
+    -------
+
+    """
+    mu = "mu"
+    return(mu)
+
