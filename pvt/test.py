@@ -52,5 +52,6 @@ Volumetric_factor=Bo(pressure,
                      Gamma_Oil,
                      Compressibility)
 
-plt.plot(pressure, Volumetric_factor)
+print(Pressure_Bubble_Point)
+plt.plot(pressure, Oil_density)
 plt.show()
