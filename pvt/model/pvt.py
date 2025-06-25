@@ -1,7 +1,9 @@
 import numpy as np
+"Carga la librería NumPy para trabajar con operaciones vectorizadas y arrays numéricos."
 
-
+"Calcula el factor de volumen del petróleo (Bo) en función de presión y otras propiedades. Ajusta su valor si la presión supera la de burbuja."
 def Bo(p, api, t, rsb, pb, gamma_gas, gamma_oil, co):
+
     '''
 
     Parameters
@@ -25,7 +27,7 @@ def Bo(p, api, t, rsb, pb, gamma_gas, gamma_oil, co):
     bo[index] = bo[index[0] - 1] * np.exp(co[index] * (pb - p[index]))
     return bo
 
-
+"Determina la cantidad de gas disuelto (Rs) dependiendo de la presión, API, temperatura y gravedad específica del gas. Se limita a Rsb cuando la presión supera el punto de burbuja."
 def Rs(p, api, temperature, gamma_gas, rsb, pb=None):
     '''
 
@@ -50,7 +52,7 @@ def Rs(p, api, temperature, gamma_gas, rsb, pb=None):
         rs = rsb
     return rs
 
-
+"Estima la presión en la que el gas comienza a separarse del petróleo (Pb) usando Rsb, API, temperatura y gravedad del gas."
 def Pb(rsb, api, temperature, gamma_gas):
     '''
 
@@ -69,7 +71,7 @@ def Pb(rsb, api, temperature, gamma_gas):
     pb = 18.2 * (rsb / gamma_gas) ** 0.83 * 10**a - 1.4
     return pb
 
-
+"Calcula la compresibilidad isotérmica del crudo (Co) como función empírica de Rsb, presión, gravedad del gas, API y temperatura."
 def Co(p, rsb, gamma_g, api, t):
     '''
 
@@ -90,7 +92,7 @@ def Co(p, rsb, gamma_g, api, t):
     )
     return co
 
-
+"Estima la densidad del petróleo (ρo) en función de presión, Rs, gravedades específicas y temperatura. Ajusta la densidad si la presión supera el punto de burbuja usando la compresibilidad."
 def rho_oil(
     pressure,
     api,
@@ -135,7 +137,7 @@ def rho_oil(
             )
     return rho_o
 
-
+"Calcula la viscosidad del petróleo (μo) considerando Rs, API, temperatura y presión. Usa una fórmula empírica para ajustar el valor cuando la presión es mayor a la de burbuja."
 def mu(p, pb, rs, api, t):
     '''
 
