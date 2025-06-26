@@ -19,6 +19,7 @@ def Bo(p, api, t, rsb, pb, gamma_gas, gamma_oil, co):
 
     Returns
     -------
+    Correlacion de standing
 
     '''
     rs = Rs(p, api, t, gamma_gas, rsb)
@@ -42,6 +43,7 @@ def Rs(p, api, temperature, gamma_gas, rsb, pb=None):
 
     Returns
     -------
+    Correlacion de standing
 
     '''
     x = 0.0125 * api - 0.00091 * temperature
@@ -65,7 +67,7 @@ def Pb(rsb, api, temperature, gamma_gas):
 
     Returns
     -------
-
+    Correlacion de standing
     '''
     a = 0.00091 * temperature - 0.0125 * api
     pb = 18.2 * (rsb / gamma_gas) ** 0.83 * 10**a - 1.4
@@ -85,7 +87,7 @@ def Co(p, rsb, gamma_g, api, t):
 
     Returns
     -------
-
+    Correlacion de standing
     '''
     co = (
         1.705e-7 * rsb**0.69357 * gamma_g**0.1885 * api**0.3272 * t**0.6729 * p**-0.5906
@@ -118,7 +120,7 @@ def rho_oil(
 
     Returns
     -------
-
+    Correlacion de standing
     '''
     rs = Rs(pressure, api, temperature, gamma_gas, rsb)
     rho_o = (62.4 * gamma_oil + 0.0316 * rs * gamma_gas) / (

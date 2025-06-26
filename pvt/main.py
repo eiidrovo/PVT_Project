@@ -131,26 +131,29 @@ fig, ax = plt.subplots()
 #"Crea una figura y un eje (ax) para graficar."
 
 if Plot=='Rs':
-    ax.plot(pressure, Results_df['RS'])
+    ax.plot(pressure, Results_df['RS'], label='Rs')
+    ax.set_ylabel('Rs [scf/stb]')
 elif Plot=='Bo':
-    ax.plot(pressure, Results_df['Bo'])
+    ax.plot(pressure, Results_df['Bo'], label='Bo')
+    ax.set_ylabel('Bo [rb/stb]')
 elif Plot=='Rho_O':
     ax.plot(pressure, Oil_density)
+    ax.set_ylabel('Rho [lb/ft3]')
 elif Plot=='Mu_O':
-    ax.plot(pressure, Results_df['Mu_O'])
+    ax.plot(pressure, Results_df['Mu_O'], label='Mu_O')
+    ax.set_ylabel('Mu_O')
 elif Plot=='Co':
-    ax.plot(pressure, Results_df['Co'])
+    ax.plot(pressure, Results_df['Co'], label='Co')
+    ax.set_ylabel('Co [psi-1]')
 
 
 
 ax.set_title(f"{Plot} vs pressure")
 #"Establece el título del gráfico."
-
-ax.set_xlabel('Pressure')
+ax.axvline(x=Pressure_Bubble_Point, color='r', linestyle='--')
+ax.legend()
+ax.set_xlabel('Pressure [psi]')
 #"Establece la etiqueta del eje X."
-
-ax.set_ylabel(f'{Plot}')
-#"Establece la etiqueta del eje Y con la propiedad elegida."
 
 ax.grid()
 #"Activa la cuadrícula en el gráfico."
